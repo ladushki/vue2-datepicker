@@ -1,5 +1,6 @@
 import locale from '@/mixins/locale'
-import * as moment from 'moment';
+import * as moment from 'moment'
+
 export default {
   name: 'panelQuarter',
   mixins: [locale],
@@ -8,7 +9,6 @@ export default {
     calendarYear: {
       default: new Date().getFullYear()
     },
-    disabledMonth: Function,
     disabledQuarter: Function
   },
   methods: {
@@ -35,23 +35,41 @@ export default {
   render (h) {
 
     let months = this.t('months')
-    let qs = ['1.Q', '2.Q', '3.Q', '4.Q'];
+    let qs = ['1.Q', '2.Q', '3.Q', '4.Q']
 
     const currentYear = this.value && new Date(this.value).getFullYear()
-    const currentQuarter = this.value && moment( new Date(this.value)).quarter()
+    const currentQuarter = this.value && moment(new Date(this.value)).quarter()
 
     months = qs.map((v, i) => {
-      return <span
-        class={{
-          'cell': true,
-          'cell2': true,
-          'actived': currentYear === this.calendarYear && currentQuarter === i+1,
-          'disabled': this.isDisabled(i)
-        }}
-        onClick={this.selectQuarter.bind(this, i)}>
-        {v}
-      </span>
+      return
+    <
+      span
+    class
+      = {
+      {
+        'cell'
+      :
+        true,
+          'actived'
+      :
+        currentYear === this.calendarYear && currentQuarter === i + 1,
+          'disabled'
+      :
+        this.isDisabled(i)
+      }
+    }
+      onClick = {this.selectQuarter.bind(this, i)
+    }>
+      {
+        v
+      }
+    <
+      /span>
     })
-    return <div class="mx-panel  mx-panel-quarter">{months}</div>
+    return
+  <
+    div
+  class
+    = 'mx-panel  mx-panel-quarter' > {months} < /div>
   }
 }

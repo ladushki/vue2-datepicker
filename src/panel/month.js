@@ -26,7 +26,9 @@ export default {
   },
   render (h) {
     let months = this.t('months')
+
     const currentYear = this.value && new Date(this.value).getFullYear()
+
     const currentMonth = this.value && new Date(this.value).getMonth()
     months = months.map((v, i) => {
       return <span

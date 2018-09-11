@@ -232,7 +232,7 @@ $primary-color: #1284e7;
       cursor: not-allowed;
       color: #ccc;
       background-color: #f3f3f3;
-    }  
+    }
   }
 }
 
@@ -272,6 +272,15 @@ $primary-color: #1284e7;
     width: 40%;
     margin: 1px 5%;
     line-height: 40px;
+  }
+}
+.mx-panel-quarter {
+  padding: 7px 0;
+  .cell {
+    display: inline-block;
+    width: 40%;
+    margin: 10px 5%;
+    line-height: 90px;
   }
 }
 

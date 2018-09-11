@@ -22,7 +22,7 @@
         class="mx-current-month"
         @click="handleBtnMonth">{{months[calendarMonth]}}</a>
       <a
-        v-show="panel === 'DATE' || panel === 'MONTH'"
+        v-show="panel === 'DATE' || panel === 'MONTH'  || panel === 'QUARTER'"
         class="mx-current-year"
         @click="handleBtnYear">{{calendarYear}}</a>
       <a
@@ -57,6 +57,13 @@
         :disabled-month="isDisabledMonth"
         :calendar-year="calendarYear"
         @select="selectMonth" />
+      <panel-quarter
+        v-show="panel === 'QUARTER'"
+        :value="value"
+        :disabled-month="isDisabledMonth"
+        :disabled-quarter="isDisabledQuarter"
+        :calendar-year="calendarYear"
+        @select="selectQuarter" />
       <panel-time
         v-show="panel === 'TIME'"
         :minute-step="minuteStep"
@@ -77,10 +84,12 @@ import PanelDate from '@/panel/date'
 import PanelYear from '@/panel/year'
 import PanelMonth from '@/panel/month'
 import PanelTime from '@/panel/time'
+import PanelQuarter from '@/panel/quarter'
+import * as moment from 'moment';
 
 export default {
   name: 'CalendarPanel',
-  components: { PanelDate, PanelYear, PanelMonth, PanelTime },
+  components: { PanelDate, PanelYear, PanelMonth, PanelTime, PanelQuarter },
   mixins: [locale],
   props: {
     value: {
@@ -197,6 +206,7 @@ export default {
   },
   methods: {
     handelPanelChange (panel) {
+
       if (panel === 'YEAR') {
         this.firstYear = Math.floor(this.calendarYear / 10) * 10
       } else if (panel === 'TIME') {
@@ -209,15 +219,19 @@ export default {
     },
     init () {
       const type = this.type
+
       if (type === 'month') {
         this.panel = 'MONTH'
       } else if (type === 'year') {
         this.panel = 'YEAR'
+      } else if (type === 'quarter') {
+        this.panel = 'QUARTER'
       } else if (type === 'time') {
         this.panel = 'TIME'
       } else {
         this.panel = 'DATE'
       }
+
       this.updateNow(this.value)
     },
     // 根据value更新日历
@@ -258,6 +272,10 @@ export default {
       const date = new Date(this.calendarYear, month)
       return this.isDisabledDate(date)
     },
+    isDisabledQuarter (q) {
+      const date = new Date(this.calendarYear, q*3)
+      return this.isDisabledDate(date)
+    },
     selectDate (date) {
       if (this.type === 'datetime') {
         let time = new Date(date)
@@ -287,15 +305,25 @@ export default {
       this.changeCalendarYear(year)
       if (this.type.toLowerCase() === 'year') {
         return this.selectDate(new Date(this.now))
+      } else if(this.type.toLowerCase() === 'quarter'){
+        return this.selectDate(new Date(this.now))
       }
       this.showPanelMonth()
     },
     selectMonth (month) {
       this.changeCalendarMonth(month)
+
       if (this.type.toLowerCase() === 'month') {
         return this.selectDate(new Date(this.now))
       }
       this.showPanelDate()
+    },
+    selectQuarter (q) {
+      this.changeCalendarQuarter(q)
+      if (this.type.toLowerCase() === 'quarter') {
+        return this.selectDate(new Date(this.now))
+      }
+      this.showPanelYear()
     },
     selectTime (time) {
       this.$emit('select-time', time)
@@ -305,6 +333,9 @@ export default {
     },
     changeCalendarMonth (month) {
       this.now = new Date(this.calendarYear, month)
+    },
+    changeCalendarQuarter (q) {
+      this.now = new Date(this.calendarYear, q*3);
     },
     getSibling () {
       const calendars = this.$parent.$children.filter(v => v.$options.name === this.$options.name)
@@ -359,6 +390,9 @@ export default {
     },
     showPanelMonth () {
       this.panel = 'MONTH'
+    },
+    showPanelQuarter () {
+      this.panel = 'QUARTER'
     }
   }
 }

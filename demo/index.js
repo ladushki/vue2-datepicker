@@ -46,19 +46,19 @@ new Vue({  // eslint-disable-line
   },
   render (h) {
     const example1 = {
-    //  'base': '<date-picker v-model="value1" lang="en" :not-before="new Date()"></date-picker>',
-    //  'range': '<date-picker v-model="value2" range ></date-picker>',
+      'base': '<date-picker v-model="value1" lang="en" :not-before="new Date()"></date-picker>',
+      'range': '<date-picker v-model="value2" range land="en"></date-picker>',
       'month': '<date-picker v-model="value10" lang="en" type="month" format="YYYY-MM"></date-picker>',
-      'quarter': '<date-picker v-model="value11" lang="en" type="quarter" format="YYYY-Q" range></date-picker>'
-     // 'year': '<date-picker v-model="value11" lang="en" type="year" format="YYYY"></date-picker>',
-     // 'time': '<date-picker v-model="value12" lang="en" type="time" format="HH:mm:ss" placeholder="Select Time"></date-picker>'
+      'quarter': '<date-picker v-model="value11" lang="en" type="quarter" format="YYYY-Q" ></date-picker>',
+      'year': '<date-picker v-model="value11" lang="en" type="year" format="YYYY"></date-picker>',
+      'time': '<date-picker v-model="value12" lang="en" type="time" format="HH:mm:ss" placeholder="Select Time"></date-picker>'
     }
     const example2 = {
       'datetime': `
         <date-picker
           v-model="value3"
           lang="en"
-          type="datetime"
+          type="datetime"ç
           format="[on] MM-DD-YYYY [at] HH:mm"></date-picker>`,
       'datetime with time-picker-options': `
         <date-picker
@@ -112,6 +112,14 @@ new Vue({  // eslint-disable-line
     const arr = [
       {
         exam: example1
+      },
+      {
+        exam: example2,
+        tips: 'if you use the datetime, you should set the format to "YYYY-MM-DD HH:mm:ss" which default is "YYY-MM-DD'
+      },
+      {
+        exam: example3,
+        tips: 'Recommend to use the confirm option when the type is "datetime" or "range" is true'
       }
     ]
     return (

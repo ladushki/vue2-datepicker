@@ -31,7 +31,7 @@ export default {
     }
   },
   render (h) {
-    let qs = ['1.Q', '2.Q', '3.Q', '4.Q']
+    let qs = ['Q1', 'Q2', 'Q3', 'Q4']
 
     const currentYear = this.value && new Date(this.value).getFullYear()
     const currentQuarter = this.value && moment(new Date(this.value)).quarter()

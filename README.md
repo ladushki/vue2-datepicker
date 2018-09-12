@@ -2,7 +2,7 @@
 
 [中文版](https://github.com/mengxiong10/vue2-datepicker/blob/master/README.zh-CN.md)
 
-> A Datepicker Component For Vue2
+> A Datepicker Component For Vue2 - forked and added new type - Quarters - usefull for finance
 
 <a href="https://travis-ci.org/mengxiong10/vue2-datepicker">
   <img src="https://travis-ci.org/mengxiong10/vue2-datepicker.svg?branch=master" alt="build:passed">

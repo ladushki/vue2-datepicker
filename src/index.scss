@@ -1,5 +1,6 @@
 $default-color: #73879c;
-$primary-color: #1284e7;
+$primary-color: #008586;
+$secondary-color: #e5f2f3;
 
 .mx-datepicker {
   position: relative;
@@ -160,8 +161,8 @@ $primary-color: #1284e7;
   border: 1px solid rgba(0, 0, 0, 0.1);
   color: #73879c;
   &:hover {
-    color: #1284e7;
-    border-color: #1284e7;
+    color: $primary-color;
+    border-color: $primary-color;
   }
 }
 
@@ -219,19 +220,19 @@ $primary-color: #1284e7;
     vertical-align: middle;
     cursor: pointer;
     &:hover {
-      background-color: #eaf8fe;
+      background-color: $secondary-color;
     }
     &.actived {
       color: #fff;
       background-color: $primary-color;
       &.inrange {
-        background-color: $primary-color;
+        background-color:$secondary-color;
       }
     }
     &.inrange {
-      background-color: #eaf8fe;
+      background-color:$secondary-color;
       &.actived {
-        background-color: $primary-color;
+        background-color: $secondary-color;
       }
     }
     &.disabled {

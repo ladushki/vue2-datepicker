@@ -5,6 +5,8 @@ export default {
   mixins: [locale],
   props: {
     value: null,
+    startAt: null,
+    endAt: null,
     calendarYear: {
       default: new Date().getFullYear()
     },
@@ -22,6 +24,23 @@ export default {
         return
       }
       this.$emit('select', month)
+    },
+    inRange (month) {
+      const cellTime = this.value && new Date(this.calendarYear, month, 1).setHours(0, 0, 0, 0)
+      const startTime = this.startAt && new Date(this.startAt).setHours(0, 0, 0, 0)
+      const endTime = this.endAt && new Date(this.endAt).setHours(0, 0, 0, 0)
+      const curTime = this.value && new Date(this.value).setHours(0, 0, 0, 0)
+
+      if (curTime) {
+        if (cellTime === curTime) {
+          return false
+        } else if (startTime && cellTime <= curTime) {
+          return true
+        } else if (endTime && cellTime >= curTime) {
+          return true
+        }
+      }
+      return false
     }
   },
   render (h) {
@@ -35,7 +54,8 @@ export default {
         class={{
           'cell': true,
           'actived': currentYear === this.calendarYear && currentMonth === i,
-          'disabled': this.isDisabled(i)
+          'disabled': this.isDisabled(i),
+          'inrange': this.inRange(i)
         }}
         onClick={this.selectMonth.bind(this, i)}>
         {v}

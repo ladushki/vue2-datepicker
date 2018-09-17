@@ -111,6 +111,8 @@ import CalendarPanel from './calendar.vue'
 import locale from '@/mixins/locale'
 import Languages from '@/locale/languages'
 
+
+
 export default {
   fecha,
   name: 'DatePicker',
@@ -298,6 +300,12 @@ export default {
       this.displayPopup()
     },
     stringify (date, format) {
+      fecha.i18n = {
+        dayNamesShort: this.t('days'),
+        dayNames: this.t('days'),
+        monthNamesShort: this.t('months'),
+        monthNames: this.t('months')
+      }
       return formatDate(date, format || this.format)
     },
     parseDate (value, format) {

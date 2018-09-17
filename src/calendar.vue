@@ -50,12 +50,16 @@
         :value="value"
         :disabled-year="isDisabledYear"
         :first-year="firstYear"
+        :start-at="startAt"
+        :end-at="endAt"
         @select="selectYear" />
       <panel-month
         v-show="panel === 'MONTH'"
         :value="value"
         :disabled-month="isDisabledMonth"
         :calendar-year="calendarYear"
+        :start-at="startAt"
+        :end-at="endAt"
         @select="selectMonth" />
       <panel-quarter
         v-show="panel === 'QUARTER'"
@@ -63,6 +67,8 @@
         :disabled-month="isDisabledMonth"
         :disabled-quarter="isDisabledQuarter"
         :calendar-year="calendarYear"
+        :start-at="startAt"
+        :end-at="endAt"
         @select="selectQuarter" />
       <panel-time
         v-show="panel === 'TIME'"

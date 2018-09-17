@@ -226,13 +226,13 @@ $secondary-color: #e5f2f3;
       color: #fff;
       background-color: $primary-color;
       &.inrange {
-        background-color:$secondary-color;
+        background-color:$primary-color;
       }
     }
     &.inrange {
       background-color:$secondary-color;
       &.actived {
-        background-color: $secondary-color;
+        background-color: $primary-color;
       }
     }
     &.disabled {

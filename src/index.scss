@@ -224,9 +224,15 @@ $primary-color: #1284e7;
     &.actived {
       color: #fff;
       background-color: $primary-color;
+      &.inrange {
+        background-color: $primary-color;
+      }
     }
     &.inrange {
       background-color: #eaf8fe;
+      &.actived {
+        background-color: $primary-color;
+      }
     }
     &.disabled {
       cursor: not-allowed;

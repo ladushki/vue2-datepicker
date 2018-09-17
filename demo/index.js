@@ -49,7 +49,7 @@ new Vue({  // eslint-disable-line
       'base': '<date-picker v-model="value1" lang="en" :not-before="new Date()"></date-picker>',
       'range': '<date-picker v-model="value2" range land="en"></date-picker>',
       'month': '<date-picker v-model="value10" lang="sl" type="month" format="YYYY-MMMM" range></date-picker>',
-      'quarter': '<date-picker v-model="value11" lang="en" type="quarter" format="YYYY-Q" ></date-picker>',
+      'quarter': '<date-picker v-model="value11" lang="en" type="quarter" format="YYYY-Q" range></date-picker>',
       'year': '<date-picker v-model="value11" lang="en" type="year" format="YYYY"></date-picker>',
       'time': '<date-picker v-model="value12" lang="en" type="time" format="HH:mm:ss" placeholder="Select Time"></date-picker>'
     }

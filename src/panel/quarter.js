@@ -1,5 +1,6 @@
 import locale from '@/mixins/locale'
-import moment from 'moment'
+var getQuarter = require('date-fns/get_quarter')
+
 export default {
   name: 'panelQuarter',
   mixins: [locale],
@@ -54,7 +55,7 @@ export default {
     let qs = ['Q1', 'Q2', 'Q3', 'Q4']
 
     const currentYear = this.value && new Date(this.value).getFullYear()
-    const currentQuarter = this.value && moment(new Date(this.value)).quarter()
+    const currentQuarter = this.value && getQuarter(new Date(this.value))
 
     let quarters = qs.map((v, i) => {
       return <span

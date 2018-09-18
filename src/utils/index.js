@@ -1,5 +1,6 @@
 import fecha from 'fecha'
-import moment from 'moment'
+
+var formatFns = require('date-fns/format')
 
 export function isPlainObject (obj) {
   return Object.prototype.toString.call(obj) === '[object Object]'
@@ -58,7 +59,7 @@ export function formatTime (time, type = '24', a = 'a') {
 export function formatDate (date, format) {
   try {
     if (format.includes('Q')) {
-      return moment(new Date(date)).format(format)
+      return formatFns(new Date(date), format)
     }
     return fecha.format(new Date(date), format)
   } catch (e) {

@@ -173,6 +173,7 @@ export default {
       },
       set (val) {
         const now = new Date(val)
+
         this.calendarYear = now.getFullYear()
         this.calendarMonth = now.getMonth()
       }
@@ -308,9 +309,10 @@ export default {
     },
     selectYear (year) {
       this.changeCalendarYear(year)
+
       if (this.type.toLowerCase() === 'year') {
-        return this.selectDate(new Date(this.now))
-      } else if(this.type.toLowerCase() === 'quarter'){
+        return this.selectDate(new Date(year, 0, 1))
+      } else if (this.type.toLowerCase() === 'quarter') {
         return this.selectDate(new Date(this.now))
       }
       this.showPanelMonth()
@@ -340,7 +342,7 @@ export default {
       this.now = new Date(this.calendarYear, month)
     },
     changeCalendarQuarter (q) {
-      this.now = new Date(this.calendarYear, q*3);
+      this.now = new Date(this.calendarYear, q * 3)
     },
     getSibling () {
       const calendars = this.$parent.$children.filter(v => v.$options.name === this.$options.name)

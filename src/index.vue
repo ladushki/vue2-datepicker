@@ -111,8 +111,6 @@ import CalendarPanel from './calendar.vue'
 import locale from '@/mixins/locale'
 import Languages from '@/locale/languages'
 
-
-
 export default {
   fecha,
   name: 'DatePicker',
@@ -343,6 +341,7 @@ export default {
         return false
       }
       const equal = this.range ? this.rangeEqual(this.value, this.currentValue) : this.dateEqual(this.value, this.currentValue)
+
       if (equal) {
         return false
       }
